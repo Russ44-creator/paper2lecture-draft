@@ -97,43 +97,99 @@ Paper2Lecture uses a **hybrid AI strategy**:
 
 ## Getting Started
 
-### 1. Clone the Repository
+### System Requirements
+
+- **Node.js** 18.0 or higher
+- **npm** 9.0 or higher (comes with Node.js)
+- **Chrome 127+** (Canary or Dev channel) for Gemini Nano support
+
+### Installation & Running the App
+
+#### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/paper2lecture.git
 cd paper2lecture
 ```
 
-### 2. Install Dependencies
+#### 2. Install Dependencies
+
+This will install all required packages including React, TypeScript, Vite, Tailwind CSS, and PDF.js:
 
 ```bash
 npm install
 ```
 
-### 3. Set Up Environment Variables (Optional)
+**What gets installed:**
+- `react` & `react-dom` - UI framework
+- `typescript` - Type safety
+- `vite` - Build tool and dev server
+- `tailwindcss` - Styling
+- `pdfjs-dist` - PDF text extraction
+- And development dependencies (ESLint, PostCSS, etc.)
 
-Create a `.env` file for Gemini API fallback:
+#### 3. Set Up Environment Variables (Optional)
+
+Create a `.env` file in the root directory for Gemini API fallback:
 
 ```env
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-> **Note**: If Gemini Nano is available, the app will use it by default (no API key needed!)
+> **Note**: If Gemini Nano is available in your browser, the app will use it by default (no API key needed!)
 
-### 4. Start Development Server
+#### 4. Start Development Server
 
 ```bash
 npm run dev
 ```
 
+This will start the Vite development server. You should see output like:
+
+```
+VITE v6.0.1  ready in 500 ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+```
+
 Open [http://localhost:5173](http://localhost:5173) in Chrome Canary/Dev
 
-### 5. Build for Production
+The app will automatically reload when you make code changes.
+
+#### 5. Build for Production
+
+To create an optimized production build:
 
 ```bash
 npm run build
+```
+
+This compiles TypeScript and creates optimized files in the `dist/` directory.
+
+To preview the production build locally:
+
+```bash
 npm run preview
 ```
+
+### Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production (outputs to `dist/`)
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Check code for errors with ESLint
+
+### Troubleshooting
+
+**Issue**: "Cannot find module" errors
+- **Solution**: Delete `node_modules` and `package-lock.json`, then run `npm install` again
+
+**Issue**: Port 5173 already in use
+- **Solution**: Kill the process using that port or Vite will automatically use the next available port
+
+**Issue**: Gemini Nano not available
+- **Solution**: Make sure you're using Chrome Canary/Dev and have enabled the required flags (see Prerequisites section)
 
 ---
 
@@ -239,13 +295,19 @@ model: "gemini-1.5-flash"
 
 ## Roadmap
 
-### v1.0 (MVP) - Current
-- [x] PDF upload and text extraction
-- [x] Gemini Nano integration
-- [x] AI summarization
-- [x] Contextual Q&A
-- [x] Text highlighting
-- [x] Basic diagram generation
+### v0.1 (MVP Setup) - Current
+- [x] React + TypeScript + Vite setup
+- [x] Tailwind CSS configuration
+- [x] Basic UI layout
+- [ ] PDF upload and text extraction
+- [ ] Gemini Nano integration
+- [ ] AI summarization
+- [ ] Basic Q&A interface
+
+### v1.0 (Full MVP)
+- [ ] Contextual Q&A with highlighting
+- [ ] Basic diagram generation
+- [ ] Multiple paper management
 
 ### v1.5 (Next)
 - [ ] Gemini API fallback
